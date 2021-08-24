@@ -15,6 +15,9 @@
         helper.onSearch(component, component.get("v.boatTypeId"));
     },
 
+    onBoatSelect: function(component, event, helper) {
+        let eResult = event.getParam("boatId");
+        component.set("v.selectedBoatId", eResult);
 
-
+    },
 })

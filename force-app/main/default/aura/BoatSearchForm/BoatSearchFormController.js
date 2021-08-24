@@ -15,6 +15,7 @@
         component.set("v.selectTypeId", "");
 
 
+
     },
     onChange: function(component, event, helper) {
 
@@ -39,10 +40,16 @@
         createRecordEvent.fire();
     },
 
-    handleSearch: function(component, event, helper) {
+    onFormSubmit: function(component, event, helper) {
+
         let boattype = component.get("v.selectTypeId");
+        let data = {
+            "boatTypeId": boattype
+        };
         console.log(boattype);
-        helper.searchMethod(component, boattype);
+        let updateEvent = component.getEvent("formsubmit");
+        updateEvent.setParams({ "formData": data });
+        updateEvent.fire();
 
     }
 

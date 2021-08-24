@@ -1,10 +1,14 @@
 <aura:component>
+    <aura:attribute name="selected" type="Boolean" default="false" />
     <aura:attribute name="boat" type="Boat__c" />
-        <lightning:button class="tile">
-            <div style="{!'background-image: url(' +v.boat.Picture__c+ ')'}" class="innertile">
-                <div class="lower-third">
-                    <h1 class="slds-truncate">{!v.boat.Contact__r.Name}</h1>
-                </div>
+
+    <aura:registerEvent name="boatSelect" type="c:BoatSelect" />
+
+    <lightning:button class="{!v.selected == false?'tile':'tile selected'}" onclick="{!c.onBoatClick}">
+        <div style="{!'background-image: url(' +v.boat.Picture__c+ ')'}" class="innertile">
+            <div class="lower-third">
+                <h1 class="slds-truncate">{!v.boat.Contact__r.Name}</h1>
             </div>
-        </lightning:button>
+        </div>
+    </lightning:button>
 </aura:component>

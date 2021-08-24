@@ -27,7 +27,7 @@
                     </lightning:layoutItem>
 
                     <lightning:layoutItem class="slds-m-vertical_x-small slds-m-horizontal_xxx-small">
-                        <lightning:button class="slds-m-top--xx-small" variant="brand" label="Search" title="Search" onclick="{!c.handleSearch}" />
+                        <lightning:button class="slds-m-top--xx-small" variant="brand" label="Search" title="Search" onclick="{!c.onFormSubmit}" />
                     </lightning:layoutItem>
 
                     <aura:if isTrue="{!v.useful}">
