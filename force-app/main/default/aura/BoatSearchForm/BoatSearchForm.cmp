@@ -1,0 +1,46 @@
+<aura:component controller="getBoatType" implements="flexipage:availableForAllPageTypes" access="global">
+    <aura:attribute name="types" type="String[]" default="" />
+    <aura:attribute name="boatTypes" type="BoatType__c[]" />
+    <aura:attribute name="newBoat" type="Object" />
+    <aura:attribute name="simpleNewBoat" type="Object" />
+    <aura:attribute name="newBoatError" type="String" />
+    <aura:attribute name="selectTypeId" type="String" />
+    <aura:attribute name="useful" type="Boolean" default="false" />
+
+    <aura:registerEvent name="formsubmit" type="c:FormSubmit" />
+
+    <force:recordData aura:id="contactRecordCreator" recordId="{!v.recordId}" targetRecord="{!v.newBoat}" targetFields="{!v.recordFields}" targetError="{!v.newBoatError}" fields="id,Picture__c,Name ,BoatType__c" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <div class="c-container">
+        <lightning:layout horizontalAlign="center">
+            <form class="slds-form_horizontal slds-form slds-grid slds-wrap">
+                <div class="slds-grid">
+                    <lightning:layoutItem class="slds-var-m-around_x-small" size="8">
+                        <lightning:select label="" variant="label-hidden" aura:id="select" name="select" onchange="{!c.onChange}">
+                            <option value="">All Types</option>
+                            <aura:iteration items="{!v.boatTypes}" var="tpye">
+                                <option value="{!tpye.Id}" text="{!tpye.Name}"></option>
+                            </aura:iteration>
+                        </lightning:select>
+                    </lightning:layoutItem>
+
+                    <lightning:layoutItem class="slds-m-vertical_x-small slds-m-horizontal_xxx-small">
+                        <lightning:button class="slds-m-top--xx-small" variant="brand" label="Search" title="Search" onclick="{!c.handleSearch}" />
+                    </lightning:layoutItem>
+
+                    <aura:if isTrue="{!v.useful}">
+                        <lightning:layoutItem class="slds-m-vertical_x-small slds-m-horizontal_xxx-small">
+                            <lightning:button class="slds-m-top--xx-small" aura:id="newButton" label="New" title="New" onclick="{! c.handleCreateRecord }" />
+                        </lightning:layoutItem>
+                    </aura:if>
+
+
+                </div>
+            </form>
+        </lightning:layout>
+    </div>
+
+
+</aura:component>
