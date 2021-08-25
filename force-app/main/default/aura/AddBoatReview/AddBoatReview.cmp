@@ -1,0 +1,31 @@
+<aura:component>
+    <aura:attribute name="boatReview" type="BoatReview__c" />
+    <aura:attribute name="recordError" type="String" access="private" />
+    <aura:attribute name="boat" type="Boat__c" access="public" />
+
+
+    <aura:registerEvent name="boatReviewAdded" type="c:BoatReviewAdded" />
+
+    <force:recordData aura:id="service" targetError="{!v.recordError}" recordUpdated="{!c.onRecordUpdated}" targetFields="{!v.boatReview}" fields="Id,Name,Comment__c,Boat__c,Rating__c" mode="EIDT" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <lightning:layout multipleRows="true">
+        <lightning:layoutItem size="12" padding="around-small">
+            <lightning:input name="title" label="Title" value="{!v.boatReview.Name}" variant="label-stacked" />
+        </lightning:layoutItem>
+
+        <lightning:layoutItem size="12" padding="around-small">
+            <lightning:inputRichText label="Description" labelVisible="true" value="{!v.boatReview.Comment__c}" disabledCategories="FORMAT_FONT" placeholder="Comment" variant="label-stacked" />
+        </lightning:layoutItem>
+
+        <lightning:layoutItem size="12" padding="around-small">
+            rating
+        </lightning:layoutItem>
+
+        <lightning:layoutItem size="12" class="slds-align--absolute-center">
+            <lightning:button iconName="utility:save" label="Submit" onclick="{!c.onSave }" />
+        </lightning:layoutItem>
+
+    </lightning:layout>
+</aura:component>
