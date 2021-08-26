@@ -18,12 +18,21 @@
 
     onRecordUpdated: function(component, event, helper) {
 
+        let boatReviewsCmp = component.find("boatReviewsCmp");
+        if (boatReviewsCmp) {
+            boatReviewsCmp.refresh();
+        }
     },
 
     onBoatReviewAdded: function(component, event, helper) {
         console.log("tab select change!!!");
-        component.find("tabSet").set('v.selectedTabId', 'boatreviewtab');
+        compboatReviewsCmp.refresh();
+        onent.find("tabSet").set('v.selectedTabId', 'boatreviewtab');
 
+        let boatReviewsCmp = component.find("boatReviewsCmp");
+        if (boatReviewsCmp) {
+            boatReviewsCmp.refresh();
+        }
     },
 
 })

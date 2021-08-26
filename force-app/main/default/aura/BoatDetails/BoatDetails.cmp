@@ -21,7 +21,7 @@
                 </lightning:tab>
 
                 <lightning:tab label="Reviews" id="boatreviewtab">
-                    <c:BoatReviews aura:id="boatReviewsCmp" />
+                    <c:BoatReviews aura:id="boatReviewsCmp" boat="{!v.boat}" />
                 </lightning:tab>
 
                 <lightning:tab label="Add Review" id="three">
